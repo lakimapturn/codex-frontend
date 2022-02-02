@@ -1,0 +1,72 @@
+import Dashboard from "views/Dashboard.js";
+import Notifications from "views/Notifications.js";
+import Icons from "views/Icons.js";
+import Typography from "views/Typography.js";
+import TableList from "views/TableList.js";
+import Maps from "views/Maps.js";
+import Upgrade from "views/Upgrade.js";
+import UserPage from "views/UserPage.js";
+
+import { FaBone, FaDog } from "react-icons/fa";
+import { RiQuestionAnswerLine, RiDashboardLine } from "react-icons/ri";
+import { IoMapSharp } from "react-icons/io5";
+
+var dashRoutes = [
+  {
+    path: "/home",
+    name: "Home",
+    icon: <RiDashboardLine size={30} />,
+    component: Dashboard,
+    layout: "",
+  },
+  {
+    path: "/my-dog",
+    name: "My Dog",
+    icon: <FaDog size={30} />,
+    component: UserPage,
+    layout: "",
+  },
+  {
+    path: "/icons",
+    name: "Icons",
+    // icon: "design_image",
+    component: Icons,
+    layout: "",
+  },
+  {
+    path: "/maps",
+    name: "Maps",
+    icon: <IoMapSharp size={30} />,
+    component: Maps,
+    layout: "",
+  },
+  {
+    path: "/questions",
+    name: "Questions",
+    icon: <RiQuestionAnswerLine size={30} />,
+    component: Notifications,
+    layout: "",
+  },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   icon: "ui-1_bell-53",
+  //   component: Notifications,
+  //   layout: "/admin",
+  // },
+  {
+    path: "/recommended-food",
+    name: `Foods For Your Dog 💗`,
+    icon: <FaBone size={30} />,
+    component: TableList,
+    layout: "",
+  },
+  // {
+  //   path: "/typography",
+  //   name: "Typography",
+  //   icon: "design-2_ruler-pencil",
+  //   component: Typography,
+  //   layout: "/admin",
+  // },
+];
+export default dashRoutes;

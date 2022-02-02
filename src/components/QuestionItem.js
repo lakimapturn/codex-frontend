@@ -1,0 +1,110 @@
+import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  Card,
+  CardTitle,
+  CardBody,
+  Button,
+  CardFooter,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Collapse,
+  Input,
+} from "reactstrap";
+
+import { answerQuestion } from "../store/actions/QAActions";
+
+const QuestionItem = (props) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [showAnswers, setShowAnswers] = useState(false);
+  const answer = useRef();
+
+  const dispatch = useDispatch();
+
+  const submitAnswer = () => {
+    dispatch(answerQuestion(props.question.id, answer.current.value.trim(), 1));
+    setModalIsOpen(false);
+    setShowAnswers(false);
+  };
+
+  return (
+    <>
+      <Card
+        key={props.question.id}
+        className="text-center"
+        color={props.question.answers && "dark"}
+        inverse={props.question.answers !== []}
+      >
+        {/* <CardHeader tag="h3">Featured</CardHeader> */}
+        <CardBody>
+          <CardTitle tag="h5">Q) {props.question.question}</CardTitle>
+          <Button
+            color="danger"
+            onClick={() => setShowAnswers((prevState) => !prevState)}
+          >
+            {showAnswers ? "Hide Answers" : "Show Answers"}
+          </Button>
+        </CardBody>
+        <CardFooter className="text-muted">
+          Asked by {props.question.asked_by.first_name}{" "}
+          {props.question.asked_by.last_name}
+        </CardFooter>
+      </Card>
+      <div style={{ width: "95%", margin: "auto" }}>
+        <Collapse isOpen={showAnswers}>
+          <Card className="text-center">
+            <CardBody>
+              {props.question.answers?.map((answer) => (
+                <Card key={answer.id}>
+                  <CardBody className="text-left">
+                    <h4 style={{ margin: 0 }}>{answer.response}</h4>
+                  </CardBody>
+                  <CardFooter className="text-right">
+                    Answered By {answer.response_by.first_name}{" "}
+                    {answer.response_by.last_name}
+                  </CardFooter>
+                </Card>
+              ))}
+            </CardBody>
+            <Button color="primary" onClick={() => setModalIsOpen(true)}>
+              Add An Answer
+            </Button>
+          </Card>
+        </Collapse>
+      </div>
+
+      <div>
+        <Modal
+          centered
+          fullscreen="xl"
+          scrollable
+          size="xl"
+          toggle={() => setModalIsOpen(false)}
+          isOpen={modalIsOpen}
+        >
+          <ModalHeader toggle={() => setModalIsOpen(true)}>
+            Q) {props.question.question}
+          </ModalHeader>
+          <ModalBody>
+            <Input
+              placeholder="Enter Your Answer"
+              rows={5}
+              type="textarea"
+              innerRef={answer}
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={submitAnswer}>
+              Submit Answer
+            </Button>
+            <Button onClick={() => setModalIsOpen(false)}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
+      </div>
+    </>
+  );
+};
+
+export default QuestionItem;
