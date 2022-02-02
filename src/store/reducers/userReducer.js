@@ -1,4 +1,4 @@
-import { FETCH_USER } from "store/actions/userActions";
+import { FETCH_USER, FETCHING_USER } from "store/actions/userActions";
 
 const initialState = {
   isUserDataFetching: false,
@@ -8,10 +8,18 @@ const initialState = {
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCHING_USER: {
+      return Object.assign({}, state, {
+        ...state,
+        isUserDataFetching: true,
+      });
+    }
+
     case FETCH_USER: {
       return Object.assign({}, state, {
         ...state,
         userData: action.payload.user,
+        isUserDataFetching: false,
       });
     }
 

@@ -1,10 +1,8 @@
 import Dashboard from "views/Dashboard.js";
 import Notifications from "views/Notifications.js";
 import Icons from "views/Icons.js";
-import Typography from "views/Typography.js";
 import TableList from "views/TableList.js";
 import Maps from "views/Maps.js";
-import Upgrade from "views/Upgrade.js";
 import UserPage from "views/UserPage.js";
 
 import { FaBone, FaDog } from "react-icons/fa";
@@ -20,17 +18,10 @@ var dashRoutes = [
     layout: "",
   },
   {
-    path: "/my-dog",
-    name: "My Dog",
-    icon: <FaDog size={30} />,
-    component: UserPage,
-    layout: "",
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    // icon: "design_image",
-    component: Icons,
+    path: "/recommended-food",
+    name: `Foods For Your Dog 💗`,
+    icon: <FaBone size={30} />,
+    component: TableList,
     layout: "",
   },
   {
@@ -40,6 +31,20 @@ var dashRoutes = [
     component: Maps,
     layout: "",
   },
+  {
+    path: "/my-dog",
+    name: "My Dog",
+    icon: <FaDog size={30} />,
+    component: UserPage,
+    layout: "",
+  },
+  // {
+  //   path: "/icons",
+  //   name: "Icons",
+  //   // icon: "design_image",
+  //   component: Icons,
+  //   layout: "",
+  // },
   {
     path: "/questions",
     name: "Questions",
@@ -54,13 +59,6 @@ var dashRoutes = [
   //   component: Notifications,
   //   layout: "/admin",
   // },
-  {
-    path: "/recommended-food",
-    name: `Foods For Your Dog 💗`,
-    icon: <FaBone size={30} />,
-    component: TableList,
-    layout: "",
-  },
   // {
   //   path: "/typography",
   //   name: "Typography",

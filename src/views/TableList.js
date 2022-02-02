@@ -20,9 +20,11 @@ import { fetchFoods } from "store/actions/dogActions";
 import { TiChevronRight } from "react-icons/ti";
 import { starRating } from "constants/functions";
 
-function RegularTables() {
+import Loading from "components/Loading";
+
+const FoodTable = (props) => {
   const dispatch = useDispatch();
-  const foods = useSelector((state) => state.dog.dogFood);
+  const tableData = useSelector((state) => state.dog);
 
   useEffect(() => {
     dispatch(fetchFoods());
@@ -30,6 +32,7 @@ function RegularTables() {
 
   return (
     <>
+      <Loading loading={tableData.isDogDataFetching} />
       <PanelHeader
         content={
           <div className="header text-center">
@@ -55,18 +58,18 @@ function RegularTables() {
                   <thead>
                     <tr>
                       <th>Brand</th>
-                      <th>Food Name</th>
+                      <th>Ingredients</th>
                       <th>Price Range</th>
                       <th>Rating</th>
                       <th>View Details</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {foods.map((food) => (
+                    {tableData.dogFood?.map((food) => (
                       <tr>
                         <th scope="row">
                           <img
-                            src={`http://localhost:8000${food.brand_logo}`}
+                            src={`https://codex-django-backend.herokuapp.com${food.brand_logo}`}
                             alt="company-logo"
                             height={100}
                             width={100}
@@ -97,6 +100,6 @@ function RegularTables() {
       </div>
     </>
   );
-}
+};
 
-export default RegularTables;
+export default FoodTable;

@@ -11,7 +11,7 @@ import QuestionItem from "components/QuestionItem";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuestions } from "store/actions/QAActions";
 
-function Notifications() {
+const CommunityPage = (props) => {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.questions.question_response);
 
@@ -39,6 +39,6 @@ function Notifications() {
       </div>
     </>
   );
-}
+};
 
-export default Notifications;
+export default CommunityPage;

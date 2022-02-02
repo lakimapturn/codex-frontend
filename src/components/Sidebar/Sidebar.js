@@ -1,11 +1,11 @@
 /*eslint-disable*/
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Nav } from "reactstrap";
+import { Button, Nav } from "reactstrap";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
-import logo from "logo-white.svg";
+import logo from "../../assets/img/logo.png";
 
 var ps;
 
@@ -31,23 +31,13 @@ function Sidebar(props) {
   return (
     <div className="sidebar" data-color="yellow">
       <div className="logo">
-        <a
-          href="https://www.creative-tim.com?ref=nudr-sidebar"
-          className="simple-text logo-mini"
-          target="_blank"
-        >
+        <a className="simple-text logo-mini">
           <div className="logo-img">
             <img src={logo} alt="react-logo" />
           </div>
           {/* replace with a paws image */}
         </a>
-        <a
-          href="https://www.creative-tim.com?ref=nudr-sidebar"
-          className="simple-text logo-normal"
-          target="_blank"
-        >
-          PAWS
-        </a>
+        <a className="simple-text logo-normal">PAWS</a>
       </div>
       <div className="sidebar-wrapper" ref={sidebar}>
         <Nav>
@@ -75,6 +65,11 @@ function Sidebar(props) {
             );
           })}
         </Nav>
+        <div style={{ textAlign: "center" }}>
+          <Button color="danger" style={{ width: "90%", alignItems: "center" }}>
+            Logout
+          </Button>
+        </div>
       </div>
     </div>
   );

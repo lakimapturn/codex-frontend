@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 // react plugin used to create charts
 import "../assets/css/styles.css";
-import { Line, Bar } from "react-chartjs-2";
 
 // reactstrap components
 import {
@@ -13,6 +12,9 @@ import {
   Row,
   Col,
   Table,
+  ListGroupItem,
+  ListGroup,
+  ListGroupItemHeading,
 } from "reactstrap";
 
 // core components
@@ -22,9 +24,12 @@ import { fetchDogData } from "store/actions/dogActions";
 import { important_tasks } from "constants/data";
 import TaskItem from "components/TaskItem";
 import { fetchUserData } from "store/actions/userActions";
+import Loading from "components/Loading";
+import FunFact from "components/FunFact";
 
 const Dashboard = (props) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchUserData());
     getPendingTasks();
@@ -44,7 +49,7 @@ const Dashboard = (props) => {
     }
   };
 
-  const myDog = useSelector((state) => state.user.userData);
+  const user = useSelector((state) => state.user);
 
   const onCompleteTaskHandler = (task) => {
     setTimeout(
@@ -60,14 +65,8 @@ const Dashboard = (props) => {
 
   return (
     <>
+      <Loading loading={user.isUserDataFetching} />
       <PanelHeader
-        // size="lg"
-        // content={
-        //   <Line
-        //     data={dashboardPanelChart.data}
-        //     options={dashboardPanelChart.options}
-        //   />
-        // }
         content={
           <div className="header text-center">
             <h2 className="title">Home</h2>
@@ -88,7 +87,7 @@ const Dashboard = (props) => {
                   }}
                 >
                   <img
-                    src={`http://localhost:8000${myDog.dog_owned?.profile_picture}`}
+                    src={`https://codex-django-backend.herokuapp.com${user.userData.dog_owned?.profile_picture}`}
                     alt="dog-pic"
                     height={150}
                     width={150}
@@ -99,7 +98,7 @@ const Dashboard = (props) => {
                       <h4 style={{ display: "flex" }}>
                         Hello! My name is
                         <p style={{ color: "red", marginLeft: 8 }}>
-                          {myDog.dog_owned?.name}
+                          {user.userData.dog_owned?.name}
                         </p>
                       </h4>
                     </CardTitle>
@@ -107,32 +106,21 @@ const Dashboard = (props) => {
                 </div>
               </CardHeader>
               <CardBody>
-                <div
-                  // className="chart-area"
-                  style={{
-                    marginLeft: "13%",
-                  }}
-                >
-                  <h5>I AM</h5>
-                  <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
-                    <li>
-                      <h6>{myDog.dog_owned?.age} years old</h6>
-                    </li>
-                    <li>
-                      <h6>A {myDog.dog_owned?.breed}</h6>
-                    </li>
-                    {myDog.dog_owned?.vaccinated && (
-                      <li>
-                        <h6>Vaccinated!</h6>
-                      </li>
-                    )}
-                    {myDog.dog_owned?.microchipped && (
-                      <li>
-                        <h6>Microchipped!</h6>
-                      </li>
-                    )}
-                  </ul>
-                </div>
+                <ListGroup flush>
+                  <ListGroupItemHeading>I AM</ListGroupItemHeading>
+                  <ListGroupItem>
+                    {user.userData.dog_owned?.age} years old
+                  </ListGroupItem>
+                  <ListGroupItem>
+                    A {user.userData.dog_owned?.breed}
+                  </ListGroupItem>
+                  {user.userData.dog_owned?.vaccinated && (
+                    <ListGroupItem>Vaccinated!</ListGroupItem>
+                  )}{" "}
+                  {user.userData.dog_owned?.microchipped && (
+                    <ListGroupItem>microchipped!</ListGroupItem>
+                  )}
+                </ListGroup>
               </CardBody>
               {/* <CardFooter>
                 <div className="stats"></div>
@@ -174,6 +162,7 @@ const Dashboard = (props) => {
             </Card>
           </Col>
         </Row>
+        <FunFact />
       </div>
     </>
   );

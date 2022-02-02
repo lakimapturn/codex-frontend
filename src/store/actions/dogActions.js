@@ -1,10 +1,12 @@
 export const FETCH_DOG_DATA = "FETCH_DOG_DATA";
 export const UPDATE_DOG_TASKS = "UPDATE_DOG_TASKS";
 export const FETCH_DOG_FOOD = "FETCH_DOG_FOOD";
+export const FETCHING_DOG_DATA = "FETCHING_DOG_DATA";
 
 export const fetchDogData = () => {
   return async (dispatch) => {
     try {
+      dispatch({ type: FETCHING_DOG_DATA });
       const response = await fetch("https://api.thedogapi.com/v1/breeds");
       const result = await response.json();
       console.log(result);
@@ -41,6 +43,7 @@ export const completeTask = (userDog, task) => {
 export const fetchFoods = () => {
   return async (dispatch) => {
     try {
+      dispatch({ type: FETCHING_DOG_DATA });
       const response = await fetch(
         "https://codex-django-backend.herokuapp.com/foods"
       );
