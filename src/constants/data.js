@@ -61,8 +61,8 @@ export const locations = [
 
   {
     name: "Provet Veterinary Clinic",
-    lng: 55.3442567,
-    lat: 25.2068104,
+    lng: 55.2770265,
+    lat: 25.2353426,
     maps_url:
       "https://www.google.com/maps/place/Provet+Veterinary+Clinic/@25.2068104,55.3442567,12z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f5cf2ea79c367:0x617bad695581b439!8m2!3d25.2774748!4d55.3501066!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTTJYMGxYYVhSblJSQUI",
     telephone: "+97142662554",
@@ -71,8 +71,8 @@ export const locations = [
 
   {
     name: "Al Falah Veterinary Clinic",
-    lng: 55.2163986,
-    lat: 25.1572418,
+    lng: 55.2599961,
+    lat: 25.1959207,
     maps_url:
       "https://www.google.com/maps/place/Al+Falah+Veterinary+Clinic/@25.1572418,55.2163986,12.38z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f42790220f339:0x6110c2a540313a27!8m2!3d25.1959159!4d55.2621848!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTnBkM05mZEc1QlJSQUI",
     telephone: "+971502753284",
@@ -86,6 +86,65 @@ export const locations = [
       "https://www.google.com/maps/place/Petzone+Veterinary+Clinic/@25.1572418,55.2163986,12.38z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f5c7bd7acb30f:0xd7c5791121fef467!8m2!3d25.1970552!4d55.2633597!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUm5jbVkyWlVoQkVBRQ",
     telephone: "+97143467870",
     website_url: "http://www.petzonevet.com/",
+  },
+  {
+    name: "Professional Veterinary Clinic",
+    lng: 55.2702686,
+    lat: 25.2479288,
+    maps_url:
+      "https://www.google.com/maps/place/Professional+Veterinary+Clinic/@25.2479288,55.2702686,12z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f5d7411857697:0x76c604d02f388c57!8m2!3d25.2240437!4d55.3602147!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTlJOV1pJWlRWUlJSQUI",
+    telephone: "+97142980330",
+    website_url: "https://profvetdubai.com/",
+  },
+
+  {
+    name: "The City Vet Clinic",
+    lng: 55.1899965,
+    lat: 25.1166228,
+    maps_url:
+      "https://www.google.com/maps/place/The+City+Vet+Clinic+-+Al+Wasl+Branch/@25.1166228,55.1899965,11.77z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f6a249d81f8ff:0xff7104814af5205e!8m2!3d25.1549963!4d55.2165985!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTmpibVZwUkdaQkVBRQ",
+    telephone: "+9718003990",
+    website_url: "http://www.thecityvetclinic.com/",
+  },
+
+  {
+    name: "Al Barsha Vet Clinic",
+    lng: 55.192252,
+    lat: 25.1134836,
+    maps_url:
+      "https://www.google.com/maps/place/Al+Barsha+Veterinary+Clinic+llc/@25.1166228,55.1899965,12z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f6bbd63d84bd5:0x84e398c9b4a5a0ff!8m2!3d25.1134831!4d55.1944327!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVUXdjSEZIZUhoblJSQUI",
+    telephone: "+97143408601",
+    website_url: "http://abvc.ae/index.php/contact",
+  },
+
+  {
+    name: "Nad Al Shiba Vet Clinic",
+    lng: 55.2867774,
+    lat: 25.1444111,
+    maps_url:
+      "https://www.google.com/maps/place/Nad+al+Shiba+Veterinary+Clinic/@25.1166228,55.1899965,12z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f68bba1ac94f3:0x3f9769778bc37ed!8m2!3d25.1347093!4d55.3004651!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQ9hbmltYWxfaG9zcGl0YWyaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTnZOVzl0Y1RKUlJSQUI",
+    telephone: "+971562760434",
+    website_url: "http://www.nadalshibavet.com/",
+  },
+
+  {
+    name: "European Veterinary Centre",
+    lng: 55.2227932,
+    lat: 25.1717489,
+    maps_url:
+      "https://www.google.com/maps/place/European+Veterinary+Centre/@25.1166228,55.1899965,12z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f6a1d4242a5fd:0x6d74c9d4aafe314!8m2!3d25.1717367!4d55.2249761!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTmhPWE0yWlhKUlJSQUI",
+    telephone: "+971562760434",
+    website_url: "http://www.nadalshibavet.com/",
+  },
+
+  {
+    name: "The Veterinary Hospital",
+    lng: 55.2010808,
+    lat: 25.138088,
+    maps_url:
+      "https://www.google.com/maps/place/THE+VETERINARY+HOSPITAL/@25.0842903,55.0898723,11.27z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f6984e597f27f:0x5a5911ee0dfde658!8m2!3d25.1380871!4d55.2032638!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTlJORnBUTXpKUlJSQUI",
+    telephone: "+97143387726",
+    website_url: "http://www.vet-hosp.com/?utm_source=gmb&utm_medium=organic",
   },
 ];
 

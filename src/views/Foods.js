@@ -9,27 +9,28 @@ import {
   Table,
   Row,
   Col,
-  Collapse,
-  CardFooter,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
   Button,
   Modal,
 } from "reactstrap";
 
 // core components
-import PanelHeader from "components/PanelHeader/PanelHeader.js";
+import PanelHeader from "components/Layout/PanelHeader.js";
 
 // import { thead, tbody } from "variables/general";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFoods } from "store/actions/dogActions";
-import { TiChevronRight } from "react-icons/ti";
 import { starRating } from "constants/functions";
 
 import Loading from "components/Loading";
 
-const FoodTable = (props) => {
+const Foods = (props) => {
   const dispatch = useDispatch();
   const tableData = useSelector((state) => state.dog);
   const [showDetails, setShowDetails] = useState(false);
+  const [selectedFood, setSelectedFood] = useState();
 
   useEffect(() => {
     dispatch(fetchFoods());
@@ -62,8 +63,8 @@ const FoodTable = (props) => {
                 >
                   <thead>
                     <tr>
+                      <th>Product</th>
                       <th>Brand</th>
-                      <th>Ingredients</th>
                       <th>Price Range</th>
                       <th>Rating</th>
                     </tr>
@@ -81,20 +82,18 @@ const FoodTable = (props) => {
                             />
                           </th>
                           <td>
-                            <h6>{food.name}</h6>
+                            <h5>{food.brand}</h5>
                           </td>
                           <td>
-                            <h6>{food.price}</h6>
+                            <h5>{food.price}</h5>
                           </td>
                           <td>{starRating(food.rating)}</td>
                           <td>
                             <Button
                               color="primary"
-                              onClick={() =>
-                                setShowDetails((prevState) => !prevState)
-                              }
+                              onClick={() => setSelectedFood(food)}
                             >
-                              {showDetails ? "Hide Details" : "View Details"}
+                              {selectedFood ? "Hide Details" : "View Details"}
                             </Button>
                           </td>
                         </tr>
@@ -107,45 +106,40 @@ const FoodTable = (props) => {
           </Col>
         </Row>
       </div>
-      <Modal isOpen={showDetails}>
-        <Card className="text-center">
-          <CardBody>
-            <Card inverse color="dark">
-              <CardTitle tag="h5">SOME FOOD</CardTitle>
-              <CardBody className="text-left"></CardBody>
-              <CardFooter className="text-right"></CardFooter>
-            </Card>
-          </CardBody>
-        </Card>
-      </Modal>
-      {/* <Modal
+      <Modal
         centered
         fullscreen="xl"
         scrollable
         size="xl"
-        toggle={() => setShowDetails((prevState) => !prevState)}
+        toggle={() => setSelectedFood(null)}
+        isOpen={selectedFood}
       >
-        <ModalHeader toggle={() => setShowDetails((prevState) => !prevState)}>
-          <CardTitle tag="h5">SOME FOOD</CardTitle>
+        <ModalHeader toggle={() => setSelectedFood(null)}>
+          <CardTitle tag="h5">{selectedFood?.brand}</CardTitle>
         </ModalHeader>
         <ModalBody>
           <Card className="text-center">
             <CardBody>
               <Card inverse color="dark">
-                
+                <Col>
+                  <img src={selectedFood?.brand_logo} />
+                </Col>
               </Card>
             </CardBody>
           </Card>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={() => setShowDetails(false)}>
-            Do Something
+          <Button
+            color="primary"
+            onClick={() => (location.href = selectedFood?.url)}
+          >
+            Visit Website
           </Button>{" "}
-          <Button onClick={function noRefCheck() {}}>Cancel</Button>
+          <Button onClick={() => setSelectedFood(null)}>Cancel</Button>
         </ModalFooter>
-      </Modal> */}
+      </Modal>
     </>
   );
 };
 
-export default FoodTable;
+export default Foods;

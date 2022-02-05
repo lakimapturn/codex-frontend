@@ -6,8 +6,8 @@ import PerfectScrollbar from "perfect-scrollbar";
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 
 // core components
-import Footer from "components/Footer/Footer.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
+import Footer from "components/Layout/Footer.js";
+import Sidebar from "components/Layout/Sidebar.js";
 
 import routes from "routes.js";
 
@@ -47,7 +47,7 @@ function Admin(props) {
               />
             );
           })}
-          <Redirect from="/admin" to="/admin/dashboard" />
+          <Redirect from="/" to="/home" />
         </Switch>
         <Footer fluid />
       </div>

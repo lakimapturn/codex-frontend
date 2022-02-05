@@ -1,26 +1,27 @@
-import Dashboard from "views/Dashboard.js";
+import Home from "views/Home.js";
 import Community from "views/Community.js";
-import TableList from "views/TableList.js";
+import Foods from "views/Foods.js";
 import Maps from "views/Maps.js";
 import UserPage from "views/UserPage.js";
 
 import { FaBone, FaDog } from "react-icons/fa";
-import { RiQuestionAnswerLine, RiDashboardLine } from "react-icons/ri";
+import { RiQuestionAnswerLine } from "react-icons/ri";
 import { IoMapSharp } from "react-icons/io5";
+import { ImHome } from "react-icons/im";
 
 var dashRoutes = [
   {
     path: "/home",
     name: "Home",
-    icon: <RiDashboardLine size={30} />,
-    component: Dashboard,
+    icon: <ImHome size={30} />,
+    component: Home,
     layout: "",
   },
   {
     path: "/recommended-food",
     name: `Foods For Your Dog 💗`,
     icon: <FaBone size={30} />,
-    component: TableList,
+    component: Foods,
     layout: "",
   },
   {

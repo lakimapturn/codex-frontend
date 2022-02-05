@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Nav } from "reactstrap";
-// javascript plugin used to create scrollbars on windows
+
 import PerfectScrollbar from "perfect-scrollbar";
 
 import logo from "../../assets/img/logo.png";
@@ -47,7 +47,6 @@ function Sidebar(props) {
           <div className="logo-img">
             <img src={logo} alt="react-logo" />
           </div>
-          {/* replace with a paws image */}
         </a>
         <a className="simple-text logo-normal">PAWS</a>
       </div>

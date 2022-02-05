@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 
 // core components
-import PanelHeader from "components/PanelHeader/PanelHeader.js";
+import PanelHeader from "components/Layout/PanelHeader.js";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDogData } from "store/actions/dogActions";
 import { important_tasks } from "constants/data";
@@ -27,7 +27,7 @@ import Loading from "components/Loading";
 import FunFact from "components/FunFact";
 import { fetchUserDataId } from "store/actions/userActions";
 
-const Dashboard = (props) => {
+const HomeScreen = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -117,13 +117,10 @@ const Dashboard = (props) => {
                     <ListGroupItem>Vaccinated!</ListGroupItem>
                   )}{" "}
                   {user.userData.dog_owned?.microchipped && (
-                    <ListGroupItem>microchipped!</ListGroupItem>
+                    <ListGroupItem>Microchipped!</ListGroupItem>
                   )}
                 </ListGroup>
               </CardBody>
-              {/* <CardFooter>
-                <div className="stats"></div>
-              </CardFooter> */}
             </Card>
           </Col>
           <Col xs={12} md={6}>
@@ -153,10 +150,6 @@ const Dashboard = (props) => {
               </CardBody>
               <CardFooter>
                 <hr />
-                <div className="stats">
-                  <i className="now-ui-icons loader_refresh spin" /> Updated 3
-                  minutes ago
-                </div>
               </CardFooter>
             </Card>
           </Col>
@@ -167,4 +160,4 @@ const Dashboard = (props) => {
   );
 };
 
-export default Dashboard;
+export default HomeScreen;

@@ -19,7 +19,7 @@ import {
 } from "@react-google-maps/api";
 
 // core components
-import PanelHeader from "components/PanelHeader/PanelHeader.js";
+import PanelHeader from "components/Layout/PanelHeader.js";
 import { locations } from "constants/data";
 
 const libraries = ["places"];
@@ -81,20 +81,12 @@ function FullScreenMap() {
                       onLoad={onMapLoad}
                       options={options}
                     >
-                      {/* {currentLocation.default && (
-                        <Marker
-                          position={{
-                            lat: currentLocation.lat,
-                            lng: currentLocation.lng,
-                          }}
-                        />
-                      )} */}
                       {locations.map((location) => (
                         <Marker
                           key={location.name}
                           position={{ lat: location.lat, lng: location.lng }}
                           onClick={() => setSelectedMarker(location)}
-                          label={location.name}
+                          // label={location.name}
                         />
                       ))}
                       {selectedMarker && (

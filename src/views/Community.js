@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 
 // core components
-import PanelHeader from "components/PanelHeader/PanelHeader.js";
+import PanelHeader from "components/Layout/PanelHeader.js";
 import QuestionItem from "components/QuestionItem";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuestions } from "store/actions/QAActions";

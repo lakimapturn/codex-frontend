@@ -1,9 +1,8 @@
-import LoginInputs from "components/LoginInputs";
-import RegistrationInputs from "components/RegistrationInputs";
+import LoginInputs from "components/Authentication/LoginInputs";
+import RegistrationInputs from "components/Authentication/RegistrationInputs";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import {
   Card,
   CardBody,

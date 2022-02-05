@@ -1,10 +1,10 @@
-import { TiStar } from "react-icons/ti";
+import { TiStar, TiStarHalf } from "react-icons/ti";
 
 export const starRating = (rating) => {
-  if (rating === 0) return;
+  if (rating < 1) return <TiStarHalf size={30} color="gold" />;
   return (
     <>
-      {starRating(rating - 1)} {<TiStar size={30} color="gold" />}
+      {<TiStar size={30} color="gold" />} {starRating(rating - 1)}
     </>
   );
 };
