@@ -7,7 +7,9 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const fetchUserDataId = (id) => {
   return async (dispatch) => {
     dispatch({ type: FETCHING_USER });
-    const response = await fetch(`http://localhost:8000/user?user=${id}`);
+    const response = await fetch(
+      `https://codex-django-backend.herokuapp.com/user?user=${id}`
+    );
     const result = await response.json();
     console.log(result);
     return dispatch({ type: FETCH_USER, payload: { user: result } });

@@ -12,7 +12,7 @@ const FunFact = (props) => {
         sm="12"
       >
         <Card className="text-center" body>
-          <CardTitle tag="h4">Fun Fact:</CardTitle>
+          <CardTitle tag="h4">Did You Know?</CardTitle>
           <CardText tag="h6">
             {facts[Math.floor(Math.random() * facts.length)].fact}{" "}
           </CardText>

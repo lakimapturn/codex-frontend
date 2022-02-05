@@ -11,7 +11,11 @@ const App = () => {
 
   useEffect(() => {
     localStorage.getItem("user")
-      ? history.replace(history.location.pathname)
+      ? history.replace(
+          history.location.pathname !== "/"
+            ? history.location.pathname
+            : "/home"
+        )
       : history.replace("/authenticate");
   }, [history]);
 

@@ -58,7 +58,7 @@ const AuthScreen = (props) => {
     };
     try {
       dispatch(registerUser(details));
-      return <Redirect to="/home" />;
+      return history.push("/home");
     } catch (err) {
       console.log(err);
     }
