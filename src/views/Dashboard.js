@@ -23,7 +23,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchDogData } from "store/actions/dogActions";
 import { important_tasks } from "constants/data";
 import TaskItem from "components/TaskItem";
-import { fetchUserData } from "store/actions/userActions";
 import Loading from "components/Loading";
 import FunFact from "components/FunFact";
 
@@ -31,7 +30,7 @@ const Dashboard = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUserData());
+    // dispatch(fetchUserData({ username: "laki", password: "admin" }));
     getPendingTasks();
   }, [dispatch]);
 

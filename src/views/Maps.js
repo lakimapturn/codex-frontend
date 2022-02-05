@@ -29,9 +29,10 @@ const options = {
   zoomControl: true,
 };
 
-const currentLocation = {
+let currentLocation = {
   lng: 55,
   lat: 25,
+  default: true,
 };
 
 function FullScreenMap() {
@@ -39,26 +40,24 @@ function FullScreenMap() {
     googleMapsApiKey: "AIzaSyAHWBEDZm9ew3NsjpN0hSRWD2QOIbxw7hw",
     libraries,
   });
-  // const [currentLocation, setCurrentLocation] = useState({
-  //   lng: 55,
-  //   lat: 25,
-  // });
+
   const [selectedMarker, setSelectedMarker] = useState();
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
 
-  // useEffect(
-  //   () =>
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       setCurrentLocation({
-  //         lat: position.coords.latitude,
-  //         lng: position.coords.longitude,
-  //       });
-  //     }),
-  //   []
-  // );
+  useEffect(
+    () =>
+      navigator.geolocation.getCurrentPosition((position) => {
+        currentLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+          default: false,
+        };
+      }),
+    []
+  );
 
   return (
     <>
@@ -78,28 +77,39 @@ function FullScreenMap() {
                     <GoogleMap
                       mapContainerStyle={{ width: "100%", height: "100%" }}
                       center={currentLocation}
-                      zoom={9}
+                      zoom={10}
                       onLoad={onMapLoad}
                       options={options}
                     >
+                      {/* {currentLocation.default && (
+                        <Marker
+                          position={{
+                            lat: currentLocation.lat,
+                            lng: currentLocation.lng,
+                          }}
+                        />
+                      )} */}
                       {locations.map((location) => (
                         <Marker
                           key={location.name}
                           position={{ lat: location.lat, lng: location.lng }}
                           onClick={() => setSelectedMarker(location)}
+                          label={location.name}
                         />
                       ))}
                       {selectedMarker && (
                         <InfoWindow
                           onCloseClick={() => setSelectedMarker(null)}
                           position={{
-                            lat: selectedMarker.lat + 0.1,
+                            lat: selectedMarker.lat,
                             lng: selectedMarker.lng,
                           }}
                         >
                           <div>
-                            <Card>
-                              <CardHeader>{selectedMarker.name}</CardHeader>
+                            <Card className="text-center">
+                              <CardHeader tag="h6">
+                                {selectedMarker.name}
+                              </CardHeader>
                               <CardBody>
                                 <CardText>
                                   Telephone: {selectedMarker.telephone}

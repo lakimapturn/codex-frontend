@@ -1,6 +1,5 @@
 import Dashboard from "views/Dashboard.js";
-import Notifications from "views/Notifications.js";
-import Icons from "views/Icons.js";
+import Community from "views/Community.js";
 import TableList from "views/TableList.js";
 import Maps from "views/Maps.js";
 import UserPage from "views/UserPage.js";
@@ -49,16 +48,9 @@ var dashRoutes = [
     path: "/questions",
     name: "Questions",
     icon: <RiQuestionAnswerLine size={30} />,
-    component: Notifications,
+    component: Community,
     layout: "",
   },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: "ui-1_bell-53",
-  //   component: Notifications,
-  //   layout: "/admin",
-  // },
   // {
   //   path: "/typography",
   //   name: "Typography",

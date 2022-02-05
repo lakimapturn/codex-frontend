@@ -12,21 +12,24 @@ import {
   ModalFooter,
   Collapse,
   Input,
+  CardText,
 } from "reactstrap";
 
 import { answerQuestion } from "../store/actions/QAActions";
 
 const QuestionItem = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [showAnswers, setShowAnswers] = useState(false);
+  const [viewDiscussion, setViewDiscussion] = useState(false);
   const answer = useRef();
 
   const dispatch = useDispatch();
 
+  console.log(props.question.answers);
+
   const submitAnswer = () => {
     dispatch(answerQuestion(props.question.id, answer.current.value.trim(), 1));
     setModalIsOpen(false);
-    setShowAnswers(false);
+    setViewDiscussion(false);
   };
 
   return (
@@ -34,17 +37,16 @@ const QuestionItem = (props) => {
       <Card
         key={props.question.id}
         className="text-center"
-        color={props.question.answers && "dark"}
-        inverse={props.question.answers !== []}
+        color={props.question.answers.length > 0 && "dark"}
+        inverse={props.question.answers.length > 0}
       >
-        {/* <CardHeader tag="h3">Featured</CardHeader> */}
         <CardBody>
           <CardTitle tag="h5">Q) {props.question.question}</CardTitle>
           <Button
             color="danger"
-            onClick={() => setShowAnswers((prevState) => !prevState)}
+            onClick={() => setViewDiscussion((prevState) => !prevState)}
           >
-            {showAnswers ? "Hide Answers" : "Show Answers"}
+            {viewDiscussion ? "Hide Discussion" : "View Discussion"}
           </Button>
         </CardBody>
         <CardFooter className="text-muted">
@@ -53,23 +55,27 @@ const QuestionItem = (props) => {
         </CardFooter>
       </Card>
       <div style={{ width: "95%", margin: "auto" }}>
-        <Collapse isOpen={showAnswers}>
+        <Collapse isOpen={viewDiscussion}>
           <Card className="text-center">
             <CardBody>
-              {props.question.answers?.map((answer) => (
-                <Card key={answer.id}>
-                  <CardBody className="text-left">
-                    <h4 style={{ margin: 0 }}>{answer.response}</h4>
-                  </CardBody>
-                  <CardFooter className="text-right">
-                    Answered By {answer.response_by.first_name}{" "}
-                    {answer.response_by.last_name}
-                  </CardFooter>
-                </Card>
-              ))}
+              {props.question.answers.length > 0 ? (
+                props.question.answers.map((answer) => (
+                  <Card key={answer.id}>
+                    <CardBody className="text-left">
+                      <h4 style={{ margin: 0 }}>{answer.response}</h4>
+                    </CardBody>
+                    <CardFooter className="text-right">
+                      Commented By {answer.response_by.first_name}{" "}
+                      {answer.response_by.last_name}
+                    </CardFooter>
+                  </Card>
+                ))
+              ) : (
+                <h4 margin={{ margin: 0 }}>Be The First To Add An Answer!</h4>
+              )}
             </CardBody>
             <Button color="primary" onClick={() => setModalIsOpen(true)}>
-              Add An Answer
+              Add A Comment
             </Button>
           </Card>
         </Collapse>
@@ -97,7 +103,7 @@ const QuestionItem = (props) => {
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={submitAnswer}>
-              Submit Answer
+              Submit Comment
             </Button>
             <Button onClick={() => setModalIsOpen(false)}>Cancel</Button>
           </ModalFooter>

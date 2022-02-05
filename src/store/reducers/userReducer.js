@@ -1,3 +1,4 @@
+import { LOGOUT_USER } from "store/actions/userActions";
 import { FETCH_USER, FETCHING_USER } from "store/actions/userActions";
 
 const initialState = {
@@ -20,6 +21,14 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         userData: action.payload.user,
         isUserDataFetching: false,
+      });
+    }
+
+    case LOGOUT_USER: {
+      return Object.assign({}, state, {
+        ...state,
+        userData: [],
+        remainingTasks: [],
       });
     }
 

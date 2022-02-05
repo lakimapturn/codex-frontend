@@ -1,21 +1,27 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Nav } from "reactstrap";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
 import logo from "../../assets/img/logo.png";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "store/actions/userActions";
+import { useHistory } from "react-router-dom";
 
 var ps;
 
 function Sidebar(props) {
-  const sidebar = React.useRef();
-  // verifies if routeName is the one active (in browser input)
+  const sidebar = useRef();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const activeRoute = (routeName) => {
     return props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
   };
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(sidebar.current, {
         suppressScrollX: true,
@@ -28,6 +34,12 @@ function Sidebar(props) {
       }
     };
   });
+
+  const logout = async () => {
+    await dispatch(logoutUser());
+    await history.push("/authenticate");
+  };
+
   return (
     <div className="sidebar" data-color="yellow">
       <div className="logo">
@@ -66,7 +78,11 @@ function Sidebar(props) {
           })}
         </Nav>
         <div style={{ textAlign: "center" }}>
-          <Button color="danger" style={{ width: "90%", alignItems: "center" }}>
+          <Button
+            color="danger"
+            style={{ width: "90%", alignItems: "center" }}
+            onClick={logout}
+          >
             Logout
           </Button>
         </div>

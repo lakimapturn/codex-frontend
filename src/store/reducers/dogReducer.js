@@ -5,7 +5,12 @@ import { FETCH_DOG_DATA } from "store/actions/dogActions";
 
 const initialState = {
   isDogDataFetching: false,
-  dogData: [],
+  dogData: [
+    "Affenpinscher",
+    "Afghan Hound",
+    "African Hunting Dog",
+    "Airedale Terrier",
+  ],
   dogFood: [],
 };
 
@@ -21,8 +26,7 @@ export const dogReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         ...state,
         isDogDataFetching: false,
-        userData: action.payload.user,
-        remainingTasks: action.payload.user.dog_owned.tasks,
+        dogData: action.payload.data,
       });
     }
     case FETCH_DOG_FOOD: {

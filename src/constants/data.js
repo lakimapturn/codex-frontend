@@ -21,15 +21,6 @@ export const important_tasks = [
 
 export const locations = [
   {
-    name: "Provet Veterinary Clinic",
-    lat: 25.2353426,
-    lng: 55.2770265,
-    maps_url:
-      "https://www.google.com/maps/place/Provet+Veterinary+Clinic/@25.2353426,55.2770265,13z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f5cf2ea79c367:0x617bad695581b439!8m2!3d25.2774748!4d55.3501066!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTTJYMGxYYVhSblJSQUI",
-    telephone: "+97142662554",
-    website_url: "http://www.provetdubai.com/",
-  },
-  {
     name: "Zabeel Veterinary Hospital",
     lat: 25.1446263,
     lng: 55.2214398,
@@ -40,12 +31,61 @@ export const locations = [
   },
   {
     name: "Pet Lovers Veterinary Clinic",
-    lat: 25.1446263,
-    lng: 55.2214398,
+    lat: 25.1589379,
+    lng: 55.4051446,
     maps_url:
       "https://www.google.com/maps/place/Pet+Lovers+Veterinary+Clinic/@25.1446263,55.2214398,11.96z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f6135148925b3:0x94819f07eb9fc0a9!8m2!3d25.1702616!4d55.4046965!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTTRheTExTlZWM0VBRQ",
     telephone: "+97144472289",
     website_url: "",
+  },
+
+  {
+    name: "Diera Vetenary Clinic",
+    lng: 55.324844,
+    lat: 25.2107763,
+    maps_url:
+      "https://www.google.com/maps/place/Deira+Veterinary+Clinic/@25.2107763,55.324844,11z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f5e9dc31911d1:0xefdd3161c33dbd07!8m2!3d25.2876566!4d55.4045988!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVUkJNa2x5WmpKM1JSQUI",
+    telephone: "+97142581881",
+    website_url: "http://www.dubaivetclinic.ae/",
+  },
+
+  {
+    name: "The city Vet Clinic Mirdiff Branch",
+    lng: 55.3442567,
+    lat: 25.2068104,
+    maps_url:
+      "https://www.google.com/maps/place/The+City+Vet+Clinic+-+Mirdif+Branch/@25.2068104,55.3442567,11.61z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f609269f9902b:0xd39d965b24eb0a45!8m2!3d25.2217919!4d55.4345655!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVUnBNSEZZUWpKUlJSQUI",
+    telephone: "+9718003990",
+    website_url: "https://thecityvetclinic.com/",
+  },
+
+  {
+    name: "Provet Veterinary Clinic",
+    lng: 55.3442567,
+    lat: 25.2068104,
+    maps_url:
+      "https://www.google.com/maps/place/Provet+Veterinary+Clinic/@25.2068104,55.3442567,12z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f5cf2ea79c367:0x617bad695581b439!8m2!3d25.2774748!4d55.3501066!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTTJYMGxYYVhSblJSQUI",
+    telephone: "+97142662554",
+    website_url: "http://www.provetdubai.com/",
+  },
+
+  {
+    name: "Al Falah Veterinary Clinic",
+    lng: 55.2163986,
+    lat: 25.1572418,
+    maps_url:
+      "https://www.google.com/maps/place/Al+Falah+Veterinary+Clinic/@25.1572418,55.2163986,12.38z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f42790220f339:0x6110c2a540313a27!8m2!3d25.1959159!4d55.2621848!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTnBkM05mZEc1QlJSQUI",
+    telephone: "+971502753284",
+    website_url: "",
+  },
+  {
+    name: "Petzone Veterinary Clinic",
+    lng: 55.2163986,
+    lat: 25.1572418,
+    maps_url:
+      "https://www.google.com/maps/place/Petzone+Veterinary+Clinic/@25.1572418,55.2163986,12.38z/data=!4m9!1m2!2m1!1svets+near+me!3m5!1s0x3e5f5c7bd7acb30f:0xd7c5791121fef467!8m2!3d25.1970552!4d55.2633597!15sCgx2ZXRzIG5lYXIgbWUiA5ABAVoOIgx2ZXRzIG5lYXIgbWWSAQx2ZXRlcmluYXJpYW6aASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUm5jbVkyWlVoQkVBRQ",
+    telephone: "+97143467870",
+    website_url: "http://www.petzonevet.com/",
   },
 ];
 
