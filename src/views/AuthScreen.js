@@ -53,7 +53,7 @@ const AuthScreen = (props) => {
         vaccinated: data.vaccinated?.value === "on",
         microchipped: data.microchipped?.value === "on",
         last_vaccinated: data.last_vaccinated.value,
-        image: data.dog_image.value,
+        image: data.dog_image.files[0].name,
       },
     };
     try {

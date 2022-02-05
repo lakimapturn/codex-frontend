@@ -30,13 +30,6 @@ var dashRoutes = [
     component: Maps,
     layout: "",
   },
-  {
-    path: "/my-dog",
-    name: "My Dog",
-    icon: <FaDog size={30} />,
-    component: UserPage,
-    layout: "",
-  },
   // {
   //   path: "/icons",
   //   name: "Icons",

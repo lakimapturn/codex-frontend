@@ -1,6 +1,18 @@
+import { important_tasks } from "constants/data";
+
 export const FETCH_USER = "FETCH_USER";
 export const FETCHING_USER = "FETCHING_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
+
+export const fetchUserDataId = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: FETCHING_USER });
+    const response = await fetch(`http://localhost:8000/user?user=${id}`);
+    const result = await response.json();
+    console.log(result);
+    return dispatch({ type: FETCH_USER, payload: { user: result } });
+  };
+};
 
 export const fetchUserData = (data) => {
   return async (dispatch) => {
@@ -17,7 +29,7 @@ export const fetchUserData = (data) => {
         }
       );
       const result = await response.json();
-      console.log(result);
+
       localStorage.setItem("user", JSON.stringify(result.user.id));
 
       return dispatch({ type: FETCH_USER, payload: { user: result.user } });
@@ -62,6 +74,32 @@ export const registerUser = (details) => {
       // Add image handling and create a dispatch event that logs the user in and redirects him
 
       // return dispatch({})
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const updateTask = (user, task) => {
+  return async (dispatch) => {
+    const taskItem =
+      task.text.indexOf("First Vaccination") !== -1
+        ? "vaccinated"
+        : "microchipped";
+    const data = { user: user, task: taskItem };
+
+    try {
+      const response = await fetch("http://localhost:8000/task", {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      await console.log(result);
+
+      return dispatch({ type: FETCH_USER, payload: { user: result } });
     } catch (err) {
       console.log(err);
     }

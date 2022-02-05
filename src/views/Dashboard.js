@@ -25,12 +25,14 @@ import { important_tasks } from "constants/data";
 import TaskItem from "components/TaskItem";
 import Loading from "components/Loading";
 import FunFact from "components/FunFact";
+import { fetchUserDataId } from "store/actions/userActions";
 
 const Dashboard = (props) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    // dispatch(fetchUserData({ username: "laki", password: "admin" }));
+    dispatch(fetchUserDataId(localStorage.getItem("user")));
     getPendingTasks();
   }, [dispatch]);
 
@@ -47,8 +49,6 @@ const Dashboard = (props) => {
       console.log(error);
     }
   };
-
-  const user = useSelector((state) => state.user);
 
   const onCompleteTaskHandler = (task) => {
     setTimeout(
@@ -86,7 +86,7 @@ const Dashboard = (props) => {
                   }}
                 >
                   <img
-                    src={`https://codex-django-backend.herokuapp.com${user.userData.dog_owned?.profile_picture}`}
+                    src={`https://codex-django-backend.herokuapp.com${user.userData.dog_owned?.picture}`}
                     alt="dog-pic"
                     height={150}
                     width={150}

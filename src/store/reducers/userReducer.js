@@ -1,3 +1,4 @@
+import { important_tasks } from "constants/data";
 import { LOGOUT_USER } from "store/actions/userActions";
 import { FETCH_USER, FETCHING_USER } from "store/actions/userActions";
 
@@ -17,6 +18,8 @@ export const userReducer = (state = initialState, action) => {
     }
 
     case FETCH_USER: {
+      updateTasks(action.payload.user);
+
       return Object.assign({}, state, {
         ...state,
         userData: action.payload.user,
@@ -42,5 +45,31 @@ export const userReducer = (state = initialState, action) => {
     default: {
       return state;
     }
+  }
+};
+
+const updateTasks = (user) => {
+  try {
+    const tasks = important_tasks;
+    for (const index in tasks) {
+      if (
+        tasks[index].text.indexOf("First Vaccination") !== -1 &&
+        user.dog_owned.vaccinated
+      ) {
+        tasks[index].completed = true;
+      } else if (
+        tasks[index].text.indexOf("Microchipped") !== -1 &&
+        user.dog_owned.microchipped
+      ) {
+        tasks[index].completed = true;
+      } else if (user.dog_owned.last_vaccinated) {
+        tasks[index].text =
+          "Next Vaccination:  " +
+          new Date(user.dog_owned.last_vaccinated).toLocaleDateString();
+      }
+    }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  } catch (error) {
+    console.log(error);
   }
 };

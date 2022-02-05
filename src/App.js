@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 const App = () => {
-  const userLoggedIn = useSelector((state) => state.user.loggedIn);
   const history = useHistory();
 
   useEffect(() => {

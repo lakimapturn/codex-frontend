@@ -56,11 +56,6 @@ const RegistrationInputs = (props) => {
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          console.log(event.target.dog_image.value);
-          console.log(event.target.microchipped?.value);
-          console.log(event.target.vaccinated?.value);
-          console.log(event.target.last_vaccinated.value);
-
           props.onSubmitForm(event.target);
         }}
       >
