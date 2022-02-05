@@ -1,6 +1,7 @@
 import { TiStar, TiStarHalf } from "react-icons/ti";
 
 export const starRating = (rating) => {
+  if (rating == 0) return;
   if (rating < 1) return <TiStarHalf size={30} color="gold" />;
   return (
     <>

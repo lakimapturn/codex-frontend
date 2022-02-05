@@ -29,8 +29,8 @@ import Loading from "components/Loading";
 const Foods = (props) => {
   const dispatch = useDispatch();
   const tableData = useSelector((state) => state.dog);
-  const [showDetails, setShowDetails] = useState(false);
   const [selectedFood, setSelectedFood] = useState();
+  const userDog = useSelector((state) => state.user.userData.dog_owned);
 
   useEffect(() => {
     dispatch(fetchFoods());
@@ -77,7 +77,7 @@ const Foods = (props) => {
                             <img
                               src={`https://codex-django-backend.herokuapp.com${food.brand_logo}`}
                               alt="company-logo"
-                              height={100}
+                              height={110}
                               width={100}
                             />
                           </th>
@@ -120,10 +120,32 @@ const Foods = (props) => {
         <ModalBody>
           <Card className="text-center">
             <CardBody>
-              <Card inverse color="dark">
-                <Col>
-                  <img src={selectedFood?.brand_logo} />
-                </Col>
+              <Card inverse color="dark" body>
+                <Row>
+                  <Col>
+                    <img
+                      src={`https://codex-django-backend.herokuapp.com${selectedFood?.brand_logo}`}
+                      alt="logo-img"
+                      height={300}
+                      width={270}
+                    />
+                  </Col>
+                  <Col style={{ margin: "auto" }}>
+                    <p>
+                      <h6>Recommended For:</h6> {userDog?.breed}
+                    </p>
+                    <p>
+                      <h6>Price:</h6> {selectedFood?.price}
+                    </p>
+                    <p>
+                      <h6>Ingredients:</h6> {selectedFood?.ingredients}
+                    </p>
+                    <p>
+                      <h6>Rating:</h6>{" "}
+                      {selectedFood && starRating(selectedFood?.rating)}
+                    </p>
+                  </Col>
+                </Row>
               </Card>
             </CardBody>
           </Card>
@@ -135,7 +157,7 @@ const Foods = (props) => {
           >
             Visit Website
           </Button>{" "}
-          <Button onClick={() => setSelectedFood(null)}>Cancel</Button>
+          <Button onClick={() => setSelectedFood(null)}>Go Back</Button>
         </ModalFooter>
       </Modal>
     </>
