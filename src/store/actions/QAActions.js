@@ -13,7 +13,6 @@ export const fetchQuestions = () => {
         "https://codex-django-backend.herokuapp.com/question-response"
       );
       const result = await response.json();
-      // console.log(result);
       return dispatch({
         type: FETCH_QUESTIONS,
         payload: { questions: result },
@@ -64,7 +63,6 @@ export const answerQuestion = (question, answer, user) => {
         }
       );
       const result = await response.json();
-      // console.log(result);
       return dispatch({
         type: FETCH_QUESTIONS,
         payload: { questions: result },

@@ -31,7 +31,6 @@ export const completeTask = (userDog, task) => {
         }
       );
       const result = await response.json();
-      console.log(result);
       return dispatch({ type: UPDATE_DOG_TASKS, payload: { dog: result.dog } });
     } catch (error) {
       console.log(error);

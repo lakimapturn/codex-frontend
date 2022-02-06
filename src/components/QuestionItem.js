@@ -23,9 +23,6 @@ const QuestionItem = (props) => {
   const answer = useRef();
 
   const dispatch = useDispatch();
-
-  console.log(props.question.answers);
-
   const submitAnswer = () => {
     dispatch(answerQuestion(props.question.id, answer.current.value.trim(), 1));
     setModalIsOpen(false);
@@ -37,7 +34,7 @@ const QuestionItem = (props) => {
       <Card
         key={props.question.id}
         className="text-center"
-        color={props.question.answers.length > 0 && "dark"}
+        color={props.question.answers.length > 0 ? "dark" : ""}
         inverse={props.question.answers.length > 0}
       >
         <CardBody>
@@ -64,9 +61,18 @@ const QuestionItem = (props) => {
                     <CardBody className="text-left">
                       <h4 style={{ margin: 0 }}>{answer.response}</h4>
                     </CardBody>
-                    <CardFooter className="text-right">
+                    <CardFooter className="text-center">
+                      <img
+                        src={`https://codex-django-backend.herokuapp.com${answer.response_by.dog_owned.picture}`}
+                        alt="dog-pic"
+                        height="30"
+                        width="30"
+                        style={{ borderRadius: "50%" }}
+                      />
+                      {"  "}
                       Commented By {answer.response_by.first_name}{" "}
-                      {answer.response_by.last_name}
+                      {answer.response_by.last_name} (Proud Owner of a{" "}
+                      {answer.response_by.dog_owned.breed})
                     </CardFooter>
                   </Card>
                 ))

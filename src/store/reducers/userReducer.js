@@ -51,7 +51,6 @@ export const userReducer = (state = initialState, action) => {
 const updateTasks = (user) => {
   try {
     const tasks = important_tasks;
-    console.log(user);
     for (const index in tasks) {
       if (tasks[index].id === 0 && user.dog_owned.vaccinated) {
         tasks[index].completed = true;

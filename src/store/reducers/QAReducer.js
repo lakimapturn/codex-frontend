@@ -26,17 +26,6 @@ export const questionReducer = (state = initialState, action) => {
       });
     }
 
-    case ASK_QUESTION: {
-      return {};
-    }
-
-    case ANSWER_QUESTION: {
-      state.userData.dog_owned[action.payload.task] = true;
-      return Object.assign({}, state, {
-        ...state,
-      });
-    }
-
     default: {
       return state;
     }
