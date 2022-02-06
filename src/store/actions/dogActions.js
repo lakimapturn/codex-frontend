@@ -9,7 +9,6 @@ export const fetchDogData = () => {
       dispatch({ type: FETCHING_DOG_DATA });
       const response = await fetch("https://api.thedogapi.com/v1/breeds");
       const result = await response.json();
-      // console.log(result);
       return dispatch({ type: FETCH_DOG_DATA, payload: { data: result } });
     } catch (error) {
       console.log(error);

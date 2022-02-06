@@ -49,12 +49,13 @@ const AuthScreen = (props) => {
         name: data.dog_name.value,
         age: data.dog_age.value,
         breed: data.dog_breed.value,
-        vaccinated: data.vaccinated?.value === "on",
-        microchipped: data.microchipped?.value === "on",
+        vaccinated: data.vaccinated?.checked,
+        microchipped: data.microchipped?.checked,
         last_vaccinated: data.last_vaccinated.value,
         image: data.dog_image.files[0].name,
       },
     };
+
     try {
       dispatch(registerUser(details));
       return history.push("/home");
@@ -89,7 +90,7 @@ const AuthScreen = (props) => {
                   <img src={logo} width="300" height="300" />
                 </CardBody>
                 <CardFooter>
-                  <i>- Your Personal Dog Assistant</i>
+                  <i>- The All-In-One Solution To All Your Dog’s Needs</i>
                 </CardFooter>
               </Card>
             </Col>

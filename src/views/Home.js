@@ -20,7 +20,6 @@ import {
 // core components
 import PanelHeader from "components/Layout/PanelHeader.js";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDogData } from "store/actions/dogActions";
 import { important_tasks } from "constants/data";
 import TaskItem from "components/TaskItem";
 import Loading from "components/Loading";

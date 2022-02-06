@@ -93,7 +93,7 @@ function FullScreenMap() {
                         <InfoWindow
                           onCloseClick={() => setSelectedMarker(null)}
                           position={{
-                            lat: selectedMarker.lat,
+                            lat: selectedMarker.lat + 0.01,
                             lng: selectedMarker.lng,
                           }}
                         >

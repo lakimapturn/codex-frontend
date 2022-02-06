@@ -1,21 +1,18 @@
 export const important_tasks = [
   {
-    id: 1,
+    id: 0,
     text: "My Dog's First Vaccination",
     completed: false,
-    date_completed: null,
+  },
+  {
+    id: 1,
+    text: "Getting My Dog Microchipped",
+    completed: false,
   },
   {
     id: 2,
-    text: "Getting My Dog Microchipped",
-    completed: false,
-    date_completed: null,
-  },
-  {
-    id: 3,
     text: "My Dog's Biannual Vaccination",
     completed: false,
-    date_completed: null,
   },
 ];
 

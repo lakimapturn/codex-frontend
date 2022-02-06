@@ -51,21 +51,20 @@ export const userReducer = (state = initialState, action) => {
 const updateTasks = (user) => {
   try {
     const tasks = important_tasks;
+    console.log(user);
     for (const index in tasks) {
-      if (
-        tasks[index].text.indexOf("First Vaccination") !== -1 &&
-        user.dog_owned.vaccinated
-      ) {
+      if (tasks[index].id === 0 && user.dog_owned.vaccinated) {
+        tasks[index].completed = true;
+      } else if (tasks[index].id === 1 && user.dog_owned.microchipped) {
         tasks[index].completed = true;
       } else if (
-        tasks[index].text.indexOf("Microchipped") !== -1 &&
-        user.dog_owned.microchipped
+        tasks[index].id === 2 &&
+        user.dog_owned.last_vaccination_date &&
+        user.dog_owned.vaccinated
       ) {
-        tasks[index].completed = true;
-      } else if (user.dog_owned.last_vaccinated) {
         tasks[index].text =
           "Next Vaccination:  " +
-          new Date(user.dog_owned.last_vaccinated).toLocaleDateString();
+          new Date(user.dog_owned.last_vaccination_date).toLocaleDateString();
       }
     }
     localStorage.setItem("tasks", JSON.stringify(tasks));

@@ -1,5 +1,3 @@
-import { important_tasks } from "constants/data";
-
 export const FETCH_USER = "FETCH_USER";
 export const FETCHING_USER = "FETCHING_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
@@ -11,7 +9,6 @@ export const fetchUserDataId = (id) => {
       `https://codex-django-backend.herokuapp.com/user?user=${id}`
     );
     const result = await response.json();
-    console.log(result);
     return dispatch({ type: FETCH_USER, payload: { user: result } });
   };
 };
@@ -49,12 +46,12 @@ export const registerUser = (details) => {
       first_name: details.user.first_name,
       last_name: details.user.last_name,
       email: details.user.email,
-      dog_name: details.dog?.name,
-      dog_age: details.dog?.age,
-      dog_image: details.dog?.image,
-      dog_vaccinated: details.dog?.vaccinated,
-      dog_microchipped: details.dog?.microchipped,
-      dog_breed: details.dog?.breed,
+      dog_name: details.dog.name,
+      dog_age: details.dog.age,
+      dog_image: details.dog.image,
+      dog_vaccinated: details.dog.vaccinated,
+      dog_microchipped: details.dog.microchipped,
+      dog_breed: details.dog.breed,
     };
 
     try {
@@ -69,13 +66,10 @@ export const registerUser = (details) => {
         }
       );
       const result = await response.json();
-      await console.log(result);
 
       localStorage.setItem("user", JSON.stringify(result.id));
 
-      // Add image handling and create a dispatch event that logs the user in and redirects him
-
-      // return dispatch({})
+      return dispatch({ type: FETCH_USER, payload: { user: result } });
     } catch (err) {
       console.log(err);
     }
@@ -91,15 +85,17 @@ export const updateTask = (user, task) => {
     const data = { user: user, task: taskItem };
 
     try {
-      const response = await fetch("http://localhost:8000/task", {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://codex-django-backend.herokuapp.com/task",
+        {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const result = await response.json();
-      await console.log(result);
 
       return dispatch({ type: FETCH_USER, payload: { user: result } });
     } catch (err) {
@@ -111,6 +107,7 @@ export const updateTask = (user, task) => {
 export const logoutUser = () => {
   return async (dispatch) => {
     localStorage.removeItem("user");
+    localStorage.removeItem("tasks");
     return dispatch({ type: LOGOUT_USER });
   };
 };
