@@ -118,6 +118,7 @@ const HomeScreen = (props) => {
                   {user.userData.dog_owned?.microchipped && (
                     <ListGroupItem>Microchipped!</ListGroupItem>
                   )}
+                  <ListGroupItem>Curious, Playful, Adventurous!</ListGroupItem>
                 </ListGroup>
               </CardBody>
             </Card>
