@@ -5,9 +5,7 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const fetchUserDataId = (id) => {
   return async (dispatch) => {
     dispatch({ type: FETCHING_USER });
-    const response = await fetch(
-      `https://codex-django-backend.herokuapp.com/user?user=${id}`
-    );
+    const response = await fetch(`http://127.0.0.1:8000/user?user=${id}`);
     const result = await response.json();
     return dispatch({ type: FETCH_USER, payload: { user: result } });
   };
@@ -17,16 +15,13 @@ export const fetchUserData = (data) => {
   return async (dispatch) => {
     try {
       dispatch({ type: FETCHING_USER });
-      const response = await fetch(
-        "https://codex-django-backend.herokuapp.com/auth",
-        {
-          method: "POST", // or 'PUT'
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/auth", {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       const result = await response.json();
 
       localStorage.setItem("user", JSON.stringify(result.user.id));
@@ -55,16 +50,13 @@ export const registerUser = (details) => {
     };
 
     try {
-      const response = await fetch(
-        "https://codex-django-backend.herokuapp.com/register",
-        {
-          method: "POST", // or 'PUT'
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/register", {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       const result = await response.json();
 
       localStorage.setItem("user", JSON.stringify(result.id));
@@ -85,16 +77,13 @@ export const updateTask = (user, task) => {
     const data = { user: user, task: taskItem };
 
     try {
-      const response = await fetch(
-        "https://codex-django-backend.herokuapp.com/task",
-        {
-          method: "POST", // or 'PUT'
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/task", {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       const result = await response.json();
 
       return dispatch({ type: FETCH_USER, payload: { user: result } });

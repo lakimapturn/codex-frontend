@@ -63,7 +63,7 @@ const QuestionItem = (props) => {
                     </CardBody>
                     <CardFooter className="text-center">
                       <img
-                        src={`https://codex-django-backend.herokuapp.com${answer.response_by.dog_owned.picture}`}
+                        src={`http://localhost:8000${answer.response_by.dog_owned.picture}`}
                         alt="dog-pic"
                         height="30"
                         width="30"

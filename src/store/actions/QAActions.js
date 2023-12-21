@@ -9,9 +9,7 @@ export const fetchQuestions = () => {
       dispatch({
         type: FETCHING_QUESTIONS,
       });
-      const response = await fetch(
-        "https://codex-django-backend.herokuapp.com/question-response"
-      );
+      const response = await fetch("http://127.0.0.1:8000/question-response");
       const result = await response.json();
       return dispatch({
         type: FETCH_QUESTIONS,
@@ -27,16 +25,13 @@ export const askQuestion = (question, user) => {
   return async (dispatch) => {
     const data = { user: user, question: question };
     try {
-      const response = await fetch(
-        "https://codex-django-backend.herokuapp.com/question-response",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/question-response", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       const result = await response.json();
       return dispatch({
         type: FETCH_QUESTIONS,
@@ -52,16 +47,13 @@ export const answerQuestion = (question, answer, user) => {
   return async (dispatch) => {
     const data = { user: user, answer: answer, question: question };
     try {
-      const response = await fetch(
-        "https://codex-django-backend.herokuapp.com/answer",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/answer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       const result = await response.json();
       return dispatch({
         type: FETCH_QUESTIONS,

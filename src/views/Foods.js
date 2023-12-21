@@ -75,7 +75,7 @@ const Foods = (props) => {
                         <tr>
                           <th scope="row">
                             <img
-                              src={`https://codex-django-backend.herokuapp.com${food.brand_logo}`}
+                              src={`http://127.0.0.1:8000${food.brand_logo}`}
                               alt="company-logo"
                               height={110}
                               width={100}
@@ -124,7 +124,7 @@ const Foods = (props) => {
                 <Row>
                   <Col>
                     <img
-                      src={`https://codex-django-backend.herokuapp.com${selectedFood?.brand_logo}`}
+                      src={`http://127.0.0.1:8000${selectedFood?.brand_logo}`}
                       alt="logo-img"
                       height={300}
                       width={270}

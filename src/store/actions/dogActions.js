@@ -20,16 +20,13 @@ export const completeTask = (userDog, task) => {
   return async (dispatch) => {
     try {
       const data = { dog: userDog, task: task };
-      const response = await fetch(
-        "https://codex-django-backend.herokuapp.com/dog",
-        {
-          method: "POST", // or 'PUT'
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/dog", {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       const result = await response.json();
       return dispatch({ type: UPDATE_DOG_TASKS, payload: { dog: result.dog } });
     } catch (error) {
@@ -42,9 +39,7 @@ export const fetchFoods = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: FETCHING_DOG_DATA });
-      const response = await fetch(
-        "https://codex-django-backend.herokuapp.com/foods"
-      );
+      const response = await fetch("http://127.0.0.1:8000/foods");
       const result = await response.json();
       console.log(result);
       return dispatch({ type: FETCH_DOG_FOOD, payload: { foods: result } });

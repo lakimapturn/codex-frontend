@@ -85,7 +85,7 @@ const HomeScreen = (props) => {
                   }}
                 >
                   <img
-                    src={`https://codex-django-backend.herokuapp.com${user.userData.dog_owned?.picture}`}
+                    src={`http://127.0.0.1:8000${user.userData.dog_owned?.picture}`}
                     alt="dog-pic"
                     height={150}
                     width={150}
